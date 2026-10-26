@@ -123,7 +123,12 @@ def process_media(it):
     it["fotos"] = fotos
     it["video"] = None
     if it["video_src"]:
-        shutil.copy(it["video_src"], os.path.join(dst, "video.mp4"))
+        # vídeos vão para o site sempre sem áudio
+        import subprocess
+        out = os.path.join(dst, "video.mp4")
+        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", it["video_src"], "-c:v", "copy", "-an", out])
+        if r.returncode != 0:
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", it["video_src"], "-an", "-c:v", "libx264", "-crf", "26", "-movflags", "+faststart", out], check=True)
         it["video"] = f"/fotos/{it['slug']}/video.mp4"
 
 
@@ -332,7 +337,7 @@ def detail(it):
     </div>"""
     else:
         gal = f'<div class="gal">{media_cover(it, "gal-ph", True)}</div>'
-    video = (f'<section class="blk"><h2>Vídeo</h2><video controls playsinline preload="metadata" poster="{it["fotos"][0]["g"] if it["fotos"] else ""}" src="{it["video"]}"></video></section>'
+    video = (f'<section class="blk"><h2>Vídeo</h2><video controls muted playsinline preload="metadata" poster="{it["fotos"][0]["g"] if it["fotos"] else ""}" src="{it["video"]}"></video></section>'
              if it["video"] else "")
     dest = "".join(f"<li>{e(d)}</li>" for d in it["destaques"])
     btn = (f'<a class="btn btn-full" href="{e(wa)}" target="_blank" rel="noopener">{ICON["wa"]}<span>Tenho interesse</span></a>'
