@@ -260,7 +260,7 @@ def index(items):
     wa = wa_link(CFG["whatsappTexto"])
     contato_btn = (f'<a class="btn btn-light" href="{e(wa)}" target="_blank" rel="noopener">{ICON["wa"]}<span>Conversar pelo WhatsApp</span></a>'
                    if wa else (f'<a class="btn btn-light" href="mailto:{e(CFG["email"])}">Enviar e-mail</a>' if CFG.get("email") else ""))
-    desc = "Apartamentos selecionados na Praia Brava, em Balneário Camboriú e em Itajaí, com assessoria jurídica do primeiro contato à escritura."
+    desc = "Apartamentos selecionados um a um na Praia Brava, em Balneário Camboriú, em Camboriú e em Itajaí."
     og = items[0]["fotos"][0]["g"] if items and items[0]["fotos"] else None
     return head("Valore Imobiliária · Praia Brava, Balneário Camboriú e Itajaí", desc, "/", og) + topbar("imoveis") + f"""
 <main id="conteudo">
@@ -269,7 +269,7 @@ def index(items):
   <div class="wrap hero-in">
     <p class="eb eb-light">Praia Brava · Balneário Camboriú · Itajaí</p>
     <h1>Endereços para viver o litoral com calma, beleza e valor.</h1>
-    <p class="lede">Uma curadoria de imóveis escolhidos um a um, com acompanhamento jurídico do primeiro contato à escritura.</p>
+    <p class="lede">Uma curadoria de imóveis escolhidos um a um.</p>
     <div class="hero-cta"><a class="btn btn-light" href="#imoveis">Ver imóveis</a>{('<a class="btn btn-ghost" href="#contato">Falar com a Valore</a>')}</div>
   </div>
 </section>
@@ -305,7 +305,7 @@ def index(items):
     <div class="about-mark"><img src="/assets/sym_dark.png" alt="" width="200" height="280"></div>
     <div>
       <p class="eb">A Valore</p>
-      <h2>Compra segura, conduzida por quem entende de imóvel e de contrato.</h2>
+      <h2>Uma imobiliária que conhece cada endereço que apresenta.</h2>
       <p>A Valore Imobiliária é conduzida por corretores que vivem a Praia Brava e conhecem de perto cada rua, cada edifício e cada vista que apresentam.</p>
       <p>Cada imóvel da nossa carteira é escolhido pela localização, pela qualidade da construção e pelo potencial de valorização. Você recebe um atendimento próximo e dedicado, da primeira visita à entrega das chaves.</p>
     </div>
