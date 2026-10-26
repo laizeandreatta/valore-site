@@ -1,0 +1,14 @@
+{
+  "dominio": "valoreimobiliaria.com",
+  "nome": "Valore Imobiliária",
+  "whatsapp": "",
+  "whatsappTexto": "Olá! Vim pelo site da Valore Imobiliária.",
+  "email": "",
+  "instagram": "",
+  "creci": "",
+  "regioes": [
+    {"nome": "Praia Brava", "linha": "Mar aberto, verde preservado e os endereços mais desejados entre Itajaí e Balneário Camboriú."},
+    {"nome": "Balneário Camboriú", "linha": "A orla mais conhecida do Sul, com vida urbana intensa e edifícios de alto padrão."},
+    {"nome": "Itajaí · Fazenda", "linha": "Bairro residencial tranquilo, próximo ao centro e à Beira-Rio."}
+  ]
+}
