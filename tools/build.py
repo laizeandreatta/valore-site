@@ -91,7 +91,8 @@ def load(db):
             "regiao": d.get("regiao", ""),
             "tipo": d.get("tipo", "Apartamento"),
             "rua": public_street(d.get("endereco", ""), d.get("regiao")),
-            "cidade": "Balneário Camboriú" if d.get("regiao") == "Balneário Camboriú" else "Itajaí",
+            "cidade": {"Balneário Camboriú": "Balneário Camboriú", "Camboriú": "Camboriú"}.get(d.get("regiao"), "Itajaí"),
+            "valorTabela": num(d.get("valorTabela")) or 0,
             "valor": num(d.get("valor")) or 0,
             "area": num(d.get("area")),
             "quartos": num(d.get("quartos")),
@@ -243,7 +244,7 @@ def card(it):
       <p class="eb">{e(it['codigo'])} · {e(it['tipo'])}</p>
       <h3>{e(it['titulo'])}</h3>
       {specs(it)}
-      <p class="price">{e(brl(it['valor']))}</p>
+      <p class="price">{f'<s class="was">{e(brl(it["valorTabela"]))}</s>' if it['valorTabela'] and it['valorTabela']>it['valor'] else ''}{e(brl(it['valor']))}</p>
     </div>
   </a>
 </article>"""
@@ -357,7 +358,7 @@ def detail(it):
       <div class="det-main">
         <p class="eb">{e(it['codigo'])} · {e(it['tipo'])} · {e(it['regiao'])}</p>
         <h1>{e(it['titulo'])}</h1>
-        <p class="addr">{ICON['pin']}<span>{e(it['rua'])}{', ' if it['rua'] and it['rua']!=it['regiao'] else ''}{e(it['regiao'] if it['rua']!=it['regiao'] else '')} · {e(it['cidade'])}/SC</span></p>
+        <p class="addr">{ICON['pin']}<span>{e(' · '.join(x for x in dict.fromkeys([it['rua'], it['regiao'] if it['regiao'] != it['cidade'] else '']) if x))}{' · ' if it['rua'] else ''}{e(it['cidade'])}/SC</span></p>
         {specs(it, 'specs specs-lg')}
         {f'<section class="blk"><h2>Sobre o imóvel</h2><p class="txt">{e(it["texto"])}</p></section>' if it['texto'] else ''}
         {f'<section class="blk"><h2>Diferenciais</h2><ul class="dest">{dest}</ul></section>' if dest else ''}
@@ -367,6 +368,7 @@ def detail(it):
       <aside class="det-side">
         <div class="box">
           <p class="eb">Valor de venda</p>
+          {f'<p class="was-lg">De <s>{e(brl(it["valorTabela"]))}</s> por</p>' if it['valorTabela'] and it['valorTabela']>it['valor'] else ''}
           <p class="price-lg">{e(brl(it['valor']))}</p>
           {specs(it, 'specs specs-sm')}
           {btn}
