@@ -305,8 +305,8 @@ def index(items):
     <div>
       <p class="eb">A Valore</p>
       <h2>Compra segura, conduzida por quem entende de imóvel e de contrato.</h2>
-      <p>A Valore Imobiliária nasceu da sociedade entre Laize Andreatta e Jeverson, corretores com CRECI que vivem a região que apresentam. Laize também é advogada, e cada proposta e contrato passa pela leitura dela antes de chegar à sua mesa.</p>
-      <p>Trabalhamos com poucos imóveis por vez, escolhidos pela localização, pela qualidade da construção e pelo potencial de valorização. Assim cada cliente recebe atenção inteira, da primeira visita à entrega das chaves.</p>
+      <p>A Valore Imobiliária é conduzida por corretores que vivem a Praia Brava e conhecem de perto cada rua, cada edifício e cada vista que apresentam. A assessoria jurídica faz parte da casa: propostas e contratos são redigidos e revisados por advogada antes de chegarem à sua mesa.</p>
+      <p>Cada imóvel da nossa carteira é escolhido pela localização, pela qualidade da construção e pelo potencial de valorização. Você recebe um atendimento próximo e dedicado, da primeira visita à entrega das chaves.</p>
     </div>
   </div>
 </section>
